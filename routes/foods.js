@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-
+const Joi = require('joi');
 
 const foods = [
     {id:1, name: 'Banana', quantity: '10', purchased: '1/2/19', expired: '1/10/19'},
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     
     const { error } = validatefood(req.body); //result.error
-    if(error) return res.status(400).send(result.error.details[0].message)
+    if(error) return res.status(400).send(error)
 
     const food = {
         id: foods.length + 1, 
@@ -43,7 +43,7 @@ router.put('/:id', (req, res) => {
     if(!food) return res.status(404).send('The food with the given ID is not found!');
 
     const { error } = validatefood(req.body); //result.error
-    if(error) return res.status(400).send(result.error.details[0].message)
+    if(error) return res.status(400).send(error)
 
     food.name = req.body.name;
     food.quantity = req.body.quantity;
@@ -64,7 +64,9 @@ router.delete('/:id', (req, res) => {
 function validatefood(food) {
     const schema = {
         name: Joi.string().min(3).required(),
-        quantity: Joi.string().min(1).required()
+        quantity: Joi.string().required(),
+        purchased: Joi.string().required(),
+        expired: Joi.string().required()
     };
 
     return Joi.validate(food, schema);

@@ -3,15 +3,18 @@ const router = express.Router()
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const foods = [
-    {id:1, name: 'Banana', quantity: '10', purchased: '1/2/19', expired: '1/10/19'},
-    {id:2, name: 'Apple', quantity: '16', purchased: '1/3/19', expired: '1/20/19'},
-    {id:3, name: 'Orange', quantity: '20', purchased: '1/8/19', expired: '1/18/19'}
-];
 
 const foodSchema = new mongoose.Schema({
-    name: String,
-    quantity: Number,
+    name: { 
+        type: String, 
+        required: true,
+        minlength: 3,
+        maxlength: 100 
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
     purchased: { type: Date, default: Date.now },
     expires: Date
 });
@@ -21,17 +24,49 @@ const Food = mongoose.model('Food', foodSchema);
 async function createFood(){
     const food = new Food({
         name: 'Grape',
-        Quantity: 10,
+        quantity: 10,
         expires: 2019-01-25
     });
-    const result = await food.save();
-    console.log(result);
+
+    try{
+        const result = await food.save();
+        console.log(result);
+    }
+    catch(ex){
+        console.log(ex.message);
+    }
 }
+
 
 async function getFoods() {
-    Food.find()
+
+
+    const foods = await Food
+    .find()
+    .or([ { name: 'Grape' }, { Quantity: 10 } ])
+    .limit(10)
+    .sort({name: 1})
+    .select({name: 1, tags: 1});
+    console.log(foods);
 }
 
+
+async function updateFood(id) {
+    const food = await Food.findByIdAndUpdate(id, {
+        $set: {
+            name: 'Pee'
+        }
+    }, { new: true });
+    console.log(food);
+}
+
+async function removeFood(id) {
+    const food = await Food.findByIdAndRemove(id);
+    console.log(food);
+}
+
+removeFood('5c4275ad26536603057e25e9');
+updateFood('5c4275ad26536603057e25e9');
 getFoods();
 createFood();
 

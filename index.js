@@ -1,4 +1,3 @@
-const Joi = require('joi');
 const express = require('express');
 const foods = require('./routes/foods');
 const home = require('./routes/home');

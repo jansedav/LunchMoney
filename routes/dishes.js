@@ -52,10 +52,10 @@ router.put('/:id', async (req, res) => {
         {
             name: req.body.name,
             userID: {
-                _id: dish._id,
-                name: dish.name,
-                restaraunt: dish.restaraunt,
-                username: dish.username
+                _id: user._id,
+                name: user.name,
+                restaraunt: user.restaraunt,
+                username: user.username
             },
             price: req.body.price,
             quantity: req.body.quantity,

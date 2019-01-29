@@ -1,7 +1,8 @@
 const express = require('express');
 const foods = require('./routes/foods');
 const home = require('./routes/home');
-const users= require('./routes/users');
+const users = require('./routes/users');
+const dishes = require('./routes/dishes');
 const app = express();
 const mongoose = require('mongoose');
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/api/foods', foods);
 app.use('/api/users', users);
+app.use('/api/dishes', dishes);
 app.use('/', home);
 
 const port = process.env.PORT || 3000;

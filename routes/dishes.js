@@ -1,29 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const {Food, validatefood} = require('../models/food');
+const {Dish, validatedish} = require('../models/dish');
 const {User} = require('../models/user');
 
 router.get('/', async (req, res) => {
-    const foods = await Food.find().sort('name');
-    res.send(foods);
+    const dishes = await Dish.find().sort('name');
+    res.send(dishes);
 });
 
 router.get('/:id', async (req, res) => {
-  const foods = await Food.findById(req.params.id);
+  const dishes = await Dish.findById(req.params.id);
 
-  if(!foods) res.status(404)
-  .send('The food with the given ID is not found!')
-  res.send(foods);
+  if(!dishes) res.status(404)
+  .send('The dish with the given ID is not found!')
+  res.send(dishes);
 });
 
 router.post('/', async (req, res) => {
-    const { error } = validatefood(req.body); 
+    const { error } = validatedish(req.body); 
     if(error) return res.status(400).send(error)
 
     const user = await User.findById(req.body.userID);
     if(!user) return res.status(400).send('Invalid User');
 
-    let food = new Food({
+    let dish = new Dish({
         name: req.body.name,
         userID: {
             _id: user._id,
@@ -34,51 +34,49 @@ router.post('/', async (req, res) => {
         price: req.body.price,
         quantity: req.body.quantity,
         purchased: req.body.purchased,
-        expires: req.body.expires,
         description: req.body.description
     });
-    food = await food.save();
+    dish = await dish.save();
 
-    res.send(food);
+    res.send(dish);
 });
 
 router.put('/:id', async (req, res) => {  
-    const { error } = validatefood(req.body); 
+    const { error } = validatedish(req.body); 
     if(error) return res.status(400).send(error)
     
     const user = await User.findById(req.body.userID);
     if(!user) return res.status(400).send('Invalid User');
 
-    const food = await Food.findOneAndUpdate(req.params.id,
+    const dish = await Dish.findOneAndUpdate(req.params.id,
         {
             name: req.body.name,
             userID: {
-                _id: user._id,
-                name: user.name,
-                restaraunt: user.restaraunt,
-                username: user.username
+                _id: dish._id,
+                name: dish.name,
+                restaraunt: dish.restaraunt,
+                username: dish.username
             },
             price: req.body.price,
             quantity: req.body.quantity,
             purchased: req.body.purchased,
-            expires: req.body.expires,
             description: req.body.description
         }
     , { new: true });
 
-    if(!food) return res.status(404)
-    .send('The food with the given ID is not found!');
+    if(!dish) return res.status(404)
+    .send('The dish with the given ID is not found!');
 
-    res.send(food);
+    res.send(dish);
 });
 
 router.delete('/:id', async (req, res) => {
-    const food = await Food.findOneAndDelete(req.params.id);
+    const dish = await Dish.findOneAndDelete(req.params.id);
 
-    if(!food) return res.status(404)
-    .send('The food with the given ID is not found!');
+    if(!dish) return res.status(404)
+    .send('The dish with the given ID is not found!');
 
-    res.send(food);
+    res.send(dish);
 });
 
 module.exports = router;

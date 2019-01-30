@@ -40,7 +40,7 @@ const Dish = mongoose.model('Dish', new mongoose.Schema({
 function validatedish(dish) {
     const schema = {
         name: Joi.string().min(3).required(),
-        userID: Joi.string().required(),
+        userID: Joi.objectId().required(),
         price: Joi.number().required(),
         purchased: Joi.date().required(),
         quantity: Joi.number().required(),

@@ -23,13 +23,14 @@ router.post('/', async (req, res) => {
     const user = await User.findById(req.body.userID);
     if(!user) return res.status(400).send('Invalid User');
 
-    let food = new Food({
+    const food = new Food({
         name: req.body.name,
         userID: {
             _id: user._id,
-            name: user.name,
-            restaraunt: user.restaraunt,
-            username: user.username
+            name: req.body.name,
+            email: req.body.email,
+            restaurant: req.body.restaurant,
+            password: req.body.password
         },
         price: req.body.price,
         quantity: req.body.quantity,
@@ -37,7 +38,7 @@ router.post('/', async (req, res) => {
         expires: req.body.expires,
         description: req.body.description
     });
-    food = await food.save();
+    await food.save();
 
     res.send(food);
 });
@@ -54,9 +55,10 @@ router.put('/:id', async (req, res) => {
             name: req.body.name,
             userID: {
                 _id: user._id,
-                name: user.name,
-                restaraunt: user.restaraunt,
-                username: user.username
+                name: req.body.name,
+                email: req.body.email,
+                restaurant: req.body.restaurant,
+                password: req.body.password
             },
             price: req.body.price,
             quantity: req.body.quantity,

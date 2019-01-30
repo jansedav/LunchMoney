@@ -44,7 +44,7 @@ const Food = mongoose.model('Food', new mongoose.Schema({
 function validatefood(food) {
     const schema = {
         name: Joi.string().min(3).required(),
-        userID: Joi.string().required(),
+        userID: Joi.objectId().required(),
         price: Joi.number().required(),
         quantity: Joi.number().required(),
         purchased: Joi.string().required(),

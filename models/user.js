@@ -2,32 +2,44 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 
 const userSchema = new mongoose.Schema({
-    username: { 
-        type: String, 
-        required: true,
-        minlength: 3,
-        maxlength: 100 
-    },
     name:{
         type: String,
-        required: true
+        required: true,
+        minlength: 5,
+        maxlength: 50
     },
-    restaraunt:{
+    email:{
         type: String,
-        required: true
+        required: true,
+        minlength: 5,
+        maxlength: 75,
+        unique: true
+    },
+    restaurant:{
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 50
+    },
+    password:{
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 1500,
     }
 });
 
 const User = mongoose.model('User', userSchema);
 
-function validateuser(food) {
+function validateuser(user) {
     const schema = {
-        username: Joi.string().required(),
-        name: Joi.string().required(),
-        restaraunt: Joi.string().required()
+        name: Joi.string().min(5).max(50).required(),
+        email: Joi.string().min(5).max(75).required().email(),
+        restaurant: Joi.string().min(5).max(50).required(),
+        password: Joi.string().min(5).max(1500).required()
     };
 
-    return Joi.validate(food, schema);
+    return Joi.validate(user, schema);
 }
 
 exports.userSchema = userSchema;

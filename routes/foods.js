@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const {Food, validatefood} = require('../models/food');
-const {User} = require('../models/user');
 
 router.get('/', async (req, res) => {
     const foods = await Food.find().sort('name');
@@ -20,18 +19,8 @@ router.post('/', async (req, res) => {
     const { error } = validatefood(req.body); 
     if(error) return res.status(400).send(error)
 
-    const user = await User.findById(req.body.userID);
-    if(!user) return res.status(400).send('Invalid User');
-
     const food = new Food({
         name: req.body.name,
-        userID: {
-            _id: user._id,
-            name: req.body.name,
-            email: req.body.email,
-            restaurant: req.body.restaurant,
-            password: req.body.password
-        },
         price: req.body.price,
         quantity: req.body.quantity,
         purchased: req.body.purchased,
@@ -46,20 +35,10 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {  
     const { error } = validatefood(req.body); 
     if(error) return res.status(400).send(error)
-    
-    const user = await User.findById(req.body.userID);
-    if(!user) return res.status(400).send('Invalid User');
 
     const food = await Food.findOneAndUpdate(req.params.id,
         {
             name: req.body.name,
-            userID: {
-                _id: user._id,
-                name: req.body.name,
-                email: req.body.email,
-                restaurant: req.body.restaurant,
-                password: req.body.password
-            },
             price: req.body.price,
             quantity: req.body.quantity,
             purchased: req.body.purchased,

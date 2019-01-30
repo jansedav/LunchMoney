@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const {userSchema} = require('./user');
+
 
 const Food = mongoose.model('Food', new mongoose.Schema({
     name: { 
@@ -8,10 +8,6 @@ const Food = mongoose.model('Food', new mongoose.Schema({
         required: true,
         minlength: 3,
         maxlength: 100 
-    },
-    userID: {
-        type: userSchema,
-        required: true
     },
     price:{
         type: Number,
@@ -44,7 +40,6 @@ const Food = mongoose.model('Food', new mongoose.Schema({
 function validatefood(food) {
     const schema = {
         name: Joi.string().min(3).required(),
-        userID: Joi.objectId().required(),
         price: Joi.number().required(),
         quantity: Joi.number().required(),
         purchased: Joi.string().required(),

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const {Dish, validatedish} = require('../models/dish');
-const {User} = require('../models/user');
 
 router.get('/', async (req, res) => {
     const dishes = await Dish.find().sort('name');
@@ -20,18 +19,8 @@ router.post('/', async (req, res) => {
     const { error } = validatedish(req.body); 
     if(error) return res.status(400).send(error)
 
-    const user = await User.findById(req.body.userID);
-    if(!user) return res.status(400).send('Invalid User');
-
     const dish = new Dish({
         name: req.body.name,
-        userID: {
-            _id: user._id,
-            name: req.body.name,
-            email: req.body.email,
-            restaurant: req.body.restaurant,
-            password: req.body.password
-        },
         price: req.body.price,
         quantity: req.body.quantity,
         purchased: req.body.purchased,
@@ -46,19 +35,9 @@ router.put('/:id', async (req, res) => {
     const { error } = validatedish(req.body); 
     if(error) return res.status(400).send(error)
     
-    const user = await User.findById(req.body.userID);
-    if(!user) return res.status(400).send('Invalid User');
-
     const dish = await Dish.findOneAndUpdate(req.params.id,
         {
             name: req.body.name,
-            userID: {
-                _id: user._id,
-                name: req.body.name,
-                email: req.body.email,
-                restaurant: req.body.restaurant,
-                password: req.body.password
-            },
             price: req.body.price,
             quantity: req.body.quantity,
             purchased: req.body.purchased,

@@ -18,11 +18,11 @@ if (!config.get('jwtPrivateKey')) {
 mongoose.connect('mongodb://localhost/foods', { useNewUrlParser: true })
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.error('Could not connect to MongoDB'))
-app.use(express.json());
-
 
 mongoose.set('useCreateIndex', true);
 
+
+app.use(express.json());
 app.use('/api/foods', foods);
 app.use('/api/users', users);
 app.use('/api/dishes', dishes);

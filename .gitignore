@@ -1,2 +1,3 @@
-node_modules
-/exp/node_modules
+./lunch-money-ui/node_modules
+./lunch-money-api/node_modules
+

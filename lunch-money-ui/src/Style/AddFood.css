@@ -1,0 +1,47 @@
+.user-input h1, h3{
+    text-align: center;
+  }
+
+  form{
+    color: white;
+    width: 400px;
+    font-size: 20px;
+    margin: 0 auto;
+    background: #007bff;
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .textbox{    
+    text-align: left !important;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  form label{
+    margin-left: 10%;
+    text-align: left;
+  }
+
+  form input{
+    font-size: 18px;
+  }
+
+  form .submit{
+  display: block;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid white;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  }
+
+  form .submit:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+  }

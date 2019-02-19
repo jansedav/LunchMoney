@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
   res.send(foods);
 });
 
-router.post('/',  auth, async (req, res) => {
+router.post('/', async (req, res) => {
 
     const { error } = validatefood(req.body); 
     if(error) return res.status(400).send(error)

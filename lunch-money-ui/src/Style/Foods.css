@@ -20,3 +20,51 @@ table {
     background-color: #007bff;
     color: white;
   }
+
+  .foods h2 {
+    text-align: center;
+  }
+
+  .add-item {
+    margin-left: 8%;
+    color: white;
+    padding: 15px;
+    background-color: #007bff;
+    border-radius: 6px;
+  }
+
+  .add-item:hover {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 1px solid #007bff;
+    transition: 0.3s;
+  }
+
+  .deletebtn{
+    border: 1px solid red;
+    border-radius: 8px;
+    color: white;
+    background-color: red;
+  }
+
+  .deletebtn:hover{
+    cursor: pointer;
+    color: red;
+    background-color:white;
+    transition: 0.3s;
+  }
+
+  .editbtn{
+    border: 1px solid #17a2b8;
+    border-radius: 8px;
+    color: white;
+    background-color: #17a2b8;
+  }
+
+  .editbtn:hover{
+    cursor: pointer;
+    color: #17a2b8;
+    background-color:white;
+    transition: 0.3s;
+  }

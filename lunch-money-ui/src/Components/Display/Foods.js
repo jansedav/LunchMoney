@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Style/Foods.css';
+import '../../Style/Foods.css';
 
 class Foods extends Component {
   constructor() {
@@ -31,15 +31,29 @@ class Foods extends Component {
       return expired;
     }
     else
-    var notExpired = "notExpired";
+    var notExpired = "Not Expired";
     return notExpired;
   }
 
- 
+  handleClick = userId => {
+    const requestOptions = {
+      method: 'DELETE'
+    };
+    fetch("/api/Foods/" + userId, requestOptions).then((response) => {
+      return response.json();
+    }).then((result) => {
+      window.location.reload();
+    });
+  }
+
   render() {
     return(
-      <div>
+      <div className="foods">
+      <br/>
         <h2>Inventory</h2>
+        <a className="add-item" href="/Inventory/AddFood"> Add Food </a>
+        <br/>
+        <br/>
         <table>
           <tbody>
             <tr className="column-title">
@@ -62,6 +76,8 @@ class Foods extends Component {
                 <th> {this.formatDate(Foods.expires)} </th>
                 <th> {this.expirationStatus(Foods.expires)}</th>
                 <th> ${Math.round(Foods.quantity * Foods.price)} </th>
+                <th><button onClick={() => { this.handleClick(Foods._id) }} className="deletebtn">Delete</button></th>
+                <th><button className="editbtn">Edit</button></th>
               </tr>
             )}
           </tbody>

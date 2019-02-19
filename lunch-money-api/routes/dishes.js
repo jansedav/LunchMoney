@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
         name: req.body.name,
         price: req.body.price,
         quantity: req.body.quantity,
-        purchased: req.body.purchased,
+        cost: req.body.cost,
         description: req.body.description
     });
     await dish.save();
@@ -40,7 +40,7 @@ router.put('/:id', async (req, res) => {
             name: req.body.name,
             price: req.body.price,
             quantity: req.body.quantity,
-            purchased: req.body.purchased,
+            cost: req.body.cost,
             description: req.body.description
         }
     , { new: true });

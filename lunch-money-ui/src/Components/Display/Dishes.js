@@ -53,8 +53,8 @@ class Dishes extends Component {
                 <th> ${Dishes.price} </th>
                 <th> {Dishes.quantity} </th>
                 <th> ${Math.round((Dishes.quantity * Dishes.price) - (Dishes.quantity * Dishes.cost))} </th>
-                <th><button onClick={() => { this.handleClick(Dishes._id) }} className="deletebtn">Delete</button></th>
-                <th><button className="editbtn">Edit</button></th>
+                <th><button onClick={this.handleClick.bind(this, Dishes._id) } className="deletebtn">Delete</button></th>
+                <th><button href="/Inventory/EditDish" className="editbtn">Edit</button></th>
               </tr>
             )}
 

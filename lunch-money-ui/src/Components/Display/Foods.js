@@ -27,12 +27,30 @@ class Foods extends Component {
     var d2 = new Date(date);
     var diff = Math.round((d2-d1)/86400000);
     if(diff <= 0){
+      return true;
+    }
+    else
+    return false;
+  }
+
+  checkExpiration(bool){
+    if(bool === true){
       var expired = "Expired";
       return expired;
     }
     else
-    var notExpired = "Not Expired";
-    return notExpired;
+      var notExpired = "Not Expired";
+      return notExpired;
+  }
+
+  setColor(bool){
+    if(bool === true){
+      var expired = {color: "red"};
+      return expired;
+    }
+    else
+      var notExpired = {color: "green"};
+      return notExpired;
   }
 
   handleClick = userId => {
@@ -45,6 +63,7 @@ class Foods extends Component {
       window.location.reload();
     });
   }
+
 
   render() {
     return(
@@ -74,9 +93,9 @@ class Foods extends Component {
                 <th> ${Foods.price} </th>
                 <th> {this.formatDate(Foods.purchased)} </th>
                 <th> {this.formatDate(Foods.expires)} </th>
-                <th> {this.expirationStatus(Foods.expires)}</th>
+                <th style={this.setColor(this.expirationStatus(Foods.expires))}> {this.checkExpiration(this.expirationStatus(Foods.expires))}</th>
                 <th> ${Math.round(Foods.quantity * Foods.price)} </th>
-                <th><button onClick={() => { this.handleClick(Foods._id) }} className="deletebtn">Delete</button></th>
+                <th><button onClick={ this.handleClick.bind(this, Foods._id) } className="deletebtn">Delete</button></th>
                 <th><button className="editbtn">Edit</button></th>
               </tr>
             )}

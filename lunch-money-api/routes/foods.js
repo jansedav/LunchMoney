@@ -38,7 +38,7 @@ router.put('/:id', async (req, res) => {
     const { error } = validatefood(req.body); 
     if(error) return res.status(400).send(error)
 
-    const food = await Food.findOneAndUpdate(req.params.id,
+    const food = await Food.findOneAndUpdate({_id: req.params.id},
         {
             name: req.body.name,
             price: req.body.price,
@@ -56,8 +56,8 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-    const food = await Food.findOneAndDelete(req.params.id);
-
+    const food = await Food.findOneAndDelete({_id: req.params.id});
+    console.log("Fetched ID " + req.params.id)
     if(!food) return res.status(404)
     .send('The food with the given ID is not found!');
 

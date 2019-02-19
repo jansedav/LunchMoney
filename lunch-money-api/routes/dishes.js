@@ -35,7 +35,7 @@ router.put('/:id', async (req, res) => {
     const { error } = validatedish(req.body); 
     if(error) return res.status(400).send(error)
     
-    const dish = await Dish.findOneAndUpdate(req.params.id,
+    const dish = await Dish.findOneAndUpdate({_id: req.params.id},
         {
             name: req.body.name,
             price: req.body.price,
@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-    const dish = await Dish.findOneAndDelete(req.params.id);
+    const dish = await Dish.findOneAndDelete({_id: req.params.id});
 
     if(!dish) return res.status(404)
     .send('The dish with the given ID is not found!');

@@ -9,7 +9,7 @@ class AddDish extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state={ 
         name: "",
-        cost: "",
+        price: "",
         quantity: "",
         purchased: "",
         cost: "",
@@ -24,7 +24,7 @@ class AddDish extends Component {
      headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
         "name": this.state.name,
-        "price": this.state.cost,
+        "price": this.state.price,
         "quantity": this.state.quantity,
         "cost": this.state.cost,
         "description": this.state.description

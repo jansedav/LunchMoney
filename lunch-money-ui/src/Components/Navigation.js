@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button, Nav} from 'react-bootstrap';
+import { Navbar, Nav} from 'react-bootstrap';
 import '../Style/Navigation.css';
 
 class Navigation extends Component {
@@ -11,12 +11,12 @@ class Navigation extends Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/Inventory">Inventory</Nav.Link>
-            <Nav.Link href="/Dishes">Dishes</Nav.Link>
+            <Nav.Link className="items" href="/Inventory">Inventory</Nav.Link>
+            <Nav.Link className="items" href="/Dishes">Dishes</Nav.Link>
           </Nav>
           <Nav>
-          <Button id="account-buttons" variant="outline-light">Sign Up</Button>
-          <Button id="account-buttons" variant="outline-light">Login</Button>
+          <Nav.Link href="/Register" className="account" >Sign Up</Nav.Link>
+          <Nav.Link href="/Login" className="account" >Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

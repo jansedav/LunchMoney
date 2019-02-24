@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../Style/Dishes.css';
 
+
 class Dishes extends Component {
   constructor() {
     super();
@@ -29,15 +30,15 @@ class Dishes extends Component {
 
   render() {
     return(
-      <div className="foods">
+      <div className="dishes">
         <br/>
         <h2>Dishes</h2>
-        <a className="add-item" href="/Inventory/AddDish"> Add Dish </a>
+        <a className="add-dish" href="/Inventory/AddDish"> Add Dish </a>
         <br/>
         <br/>
         <table>
           <tbody>
-            <tr className="column-title">
+            <tr className="title">
               <th>Dish Name</th>
               <th>Dish Description</th>
               <th>Cost to Make Dish</th>

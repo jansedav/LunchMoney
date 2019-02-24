@@ -7,6 +7,8 @@ import AddDish from "./Components/Add/AddDish"
 import Home from "./Components/Home"
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import './App.css';
+import Login from './Components/Users/Login';
+import Register from './Components/Users/Register'
 
 class App extends Component {
   render() {
@@ -21,6 +23,9 @@ class App extends Component {
           <Route path="/Dishes" component={Dishes} />
           <Route path="/Inventory/AddFood" component={AddFood} />
           <Route path="/Inventory/AddDish" component={AddDish} />
+          <Route path="/Login" component={Login}/>
+          <Route path="/Register" component={Register} />
+          
         </div>
       </Router>
     );

@@ -1,21 +1,26 @@
-table {
+  table {
     width:85%;
     margin: 0 auto;
   }
+
   table, th, td {
     border: 1px solid #17a2b8;
     border-collapse: collapse;
   }
+
   th, td {
     padding: 15px;
     text-align: left;
   }
+
   table tr:nth-child(even) {
     background-color: #eee;
   }
+
   table tr:nth-child(odd) {
    background-color: #fff;
   }
+  
   .column-title th {
     background-color: #007bff;
     color: white;
@@ -28,21 +33,21 @@ table {
   .add-item {
     margin-left: 8%;
     color: white;
-    padding: 15px;
+    padding: 13px !important;
     background-color: #007bff;
-    border-radius: 6px;
+    border-radius: 8px !important;
+    border: 2px solid #007bff !important;
   }
 
   .add-item:hover {
     text-decoration: none;
     color: black;
     background-color: white;
-    border: 1px solid #007bff;
     transition: 0.3s;
   }
 
   .deletebtn{
-    border: 1px solid red;
+    border: 2px solid red;
     border-radius: 8px;
     color: white;
     background-color: red;
@@ -56,7 +61,7 @@ table {
   }
 
   .editbtn{
-    border: 1px solid #17a2b8;
+    border: 2px solid #17a2b8;
     border-radius: 8px;
     color: white;
     background-color: #17a2b8;

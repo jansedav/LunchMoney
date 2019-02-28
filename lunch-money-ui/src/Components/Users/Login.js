@@ -24,8 +24,14 @@ class Login extends Component {
         const user = {
             email: this.state.email,
             password: this.state.password,
-        }
-        console.log(user);
+        };
+        fetch('/api/auth', {
+            method: "post",
+            body: user
+        }).then(response => response.json())
+        .then(response => {
+            console.log(response)
+        });
     }
 
     render() {

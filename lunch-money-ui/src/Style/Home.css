@@ -1,0 +1,13 @@
+body h1, h3{
+    font-family: 'Luckiest Guy', cursive;
+}
+
+
+.background .fas{
+    font-size: 700px;
+    z-index: -1000;
+    opacity: 0.1;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}

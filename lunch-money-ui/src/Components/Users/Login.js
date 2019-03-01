@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../Style/Users.css';
 
 class Login extends Component {
 
@@ -6,8 +7,7 @@ class Login extends Component {
         super();
         this.state = {
             email: '',
-            password: '',
-            errors: {}
+            password: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,25 +21,26 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = {
-            email: this.state.email,
-            password: this.state.password,
-        };
         fetch('/api/auth', {
-            method: "post",
-            body: user
-        }).then(response => response.json())
-        .then(response => {
-            console.log(response)
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "email": this.state.email,
+                "password": this.state.password
+            })
+        })
+        .then(res => res.text())
+        .then(res => {
+            console.log(res)
         });
     }
 
     render() {
         return(
-        <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-            <h2 style={{marginBottom: '40px'}}>Login</h2>
-            <form onSubmit={ this.handleSubmit }>
-                <div className="form-group">
+        <div className="users">
+            <form onSubmit={ this.handleSubmit } className="user_form">
+                <h2>Login <i className="fas fa-cookie-bite"></i></h2>
+                <div className="inputs">
                     <input
                     type="email"
                     placeholder="Email"
@@ -47,9 +48,9 @@ class Login extends Component {
                     name="email"
                     onChange={ this.handleInputChange }
                     value={ this.state.email }
-                    />
+                    required />
                 </div>
-                <div className="form-group">
+                <div className="inputs">
                     <input
                     type="password"
                     placeholder="Password"
@@ -57,10 +58,10 @@ class Login extends Component {
                     name="password"
                     onChange={ this.handleInputChange }
                     value={ this.state.password }
-                    />
+                    required />
                 </div>
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary">
+                <div className="inputs">
+                    <button type="submit" className="register">
                         Login User
                     </button>
                 </div>

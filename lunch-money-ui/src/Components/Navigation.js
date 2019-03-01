@@ -6,7 +6,7 @@ class Navigation extends Component {
   render() {
     return(
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-        <Navbar.Brand id="app-title" href="/">Lunch Money <i class="fas fa-utensils"></i> </Navbar.Brand>
+        <Navbar.Brand id="app-title" href="/">Lunch Money <i className="fas fa-utensils"></i> </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

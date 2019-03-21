@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 const {Food, validatefood} = require('../models/food');
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     const foods = await Food.find().sort('name');
     res.send(foods);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   const foods = await Food.findById(req.params.id);
 
   if(!foods) res.status(404)
@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
   res.send(foods);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const { error } = validatefood(req.body); 
     if(error) return res.status(400).send(error)
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
     res.send(food);
 });
 
-router.put('/:id', async (req, res) => {  
+router.put('/:id', auth, async (req, res) => {  
     const { error } = validatefood(req.body); 
     if(error) return res.status(400).send(error)
 
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
     res.send(food);
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     const food = await Food.findOneAndDelete({_id: req.params.id});
     console.log("Fetched ID " + req.params.id)
     if(!food) return res.status(404)

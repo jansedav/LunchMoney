@@ -1,41 +1,39 @@
   .dishes h2{
+    font-family: 'Luckiest Guy', cursive;
     text-align: center !important;
   }
 
-  table {
-    width:85%;
-    margin: 0 auto;
+  .dish-title {
+    background-color: #63aeff!important;
   }
 
-  table, th, td {
-    border: 1px solid #007bff;
-    border-collapse: collapse;
-  }
-
-  th, td {
-    padding: 15px;
-    text-align: left;
-  }
-
-  table tr:nth-child(even) {
-    background-color: #eee;
-  }
-
-  table tr:nth-child(odd) {
-   background-color: #fff;
-  }
-  
-  .title th {
-    background-color: #17a2b8;;
+  .dish-title th{
+    font-weight: 500;
     color: white;
+    border: 1px solid #bababa;
+  }
+
+  .dish-table {
+  width: 80%;
+  margin: 0 auto;
+  }
+
+  .dish-table .dish-rows {
+    background-color: #eaf4ff;
+  }
+
+  .dish-rows th{
+    font-weight: 400;
+    border: 1px solid #bababa;
   }
 
   .add-dish {
-    margin-left: 8%;
+    font-size: 16px;
+    margin-left: 10%;
     color: white;
-    padding: 13px;
-    background-color: #17a2b8;
-    border: 2px solid #17a2b8;
+    padding: 6px;
+    background-color: #4fa3ff;
+    border: 1px solid #4fa3ff;
     border-radius: 8px;
   }
   
@@ -45,3 +43,48 @@
     background-color: white;
     transition: 0.3s;
   }
+
+.dish-table tbody>tr>:nth-child(8){
+  background-color: white;
+  border: 1px solid white;
+}
+.dish-table tbody>tr>:nth-child(7){
+  background-color: white;
+  border: 1px solid white;
+}
+
+.deletebtn{
+  color: white !important;
+  font-size: 14px;
+  margin-left: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  background-color: red;
+}
+
+.deletebtn:hover{
+  cursor: pointer;
+  color: black !important;
+  background-color:white;
+  transition: 0.3s;
+}
+
+.editbtn{
+  text-decoration: none !important;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 14px;
+  border: 1px solid #17a2b8;
+  border-radius: 5px;
+  color: white;
+  background-color: #17a2b8;
+}
+
+.editbtn:hover{
+  cursor: pointer;
+  color: black;
+  background-color:white;
+  transition: 0.3s;
+}

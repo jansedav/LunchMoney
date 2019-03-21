@@ -37,9 +37,9 @@ class AddDish extends Component {
     return (
       <div className="user-input">
       <br/>
-      <h3> Fill out the form below to add a dish! </h3>
       <br/>
         <form onSubmit={this.handleSubmit}>
+        <h3>Add Dish <i className="fas fa-hamburger"></i></h3>
           <label>Dish Name:</label> <br/>
           <input ref={(ref) => {this.name = ref}} placeholder="Food" className="textbox" type="text" value={this.state.name} onChange={(ev)=>this.setState({name:ev.target.value})} required/>
           <br/>

@@ -62,7 +62,7 @@ router.put('/:id', async (req, res) => {
 */
 
 router.delete('/:id', async (req, res) => {
-    const user = await User.findOneAndDelete(req.params.id);
+    const user = await User.findOneAndDelete({_id: req.params.id});
 
     if(!user) return res.status(404)
     .send('The user with the given ID is not found!');

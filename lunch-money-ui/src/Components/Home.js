@@ -9,9 +9,6 @@ class Home extends Component {
           <br/>
             <h1>Welcome to Lunch Money!!</h1>
             <h3> This site is currently under construction!</h3>
-            <div className="background">
-              <i className="fas fa-utensils"></i>
-            </div>
         </div>
     );
   }

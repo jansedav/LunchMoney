@@ -6,32 +6,17 @@ class EditedDish extends Component {
   
   constructor(props){
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.state={ 
         name: "",
         cost: "",
         quantity: "",
         purchased: "",
-        cost: "",
         description: ""
     } 
   }
 
-  handleSubmit(event){ 
-    event.preventDefault();
-    fetch('/api/dishes', {
-     method: 'put',
-     headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-        "name": this.state.name,
-        "price": this.state.price,
-        "quantity": this.state.quantity,
-        "cost": this.state.cost,
-        "description": this.state.description
-        })
-    });
-    this.props.history.push('/Dishes');
-   }
+  
+
 
   render() {
     return (

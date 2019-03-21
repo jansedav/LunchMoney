@@ -30,20 +30,17 @@ class AddFood extends Component {
         "expires": this.state.expires,
         "description": this.state.description
         })
-    })        
-    .then(res => res.text())
-    .then(res => {
-        console.log(res)
     });
+    this.props.history.push('/Inventory');
    }
 
   render() {
     return (
       <div className="user-input">
         <br/>
-        <h3> Fill out the form below to add a dish! </h3>
         <br/>
           <form onSubmit={this.handleSubmit}>
+          <h3> Add Food <i className="fas fa-hotdog"></i></h3>
             <label>Food Name:</label> <br/>
             <input 
               ref={(ref) => {this.name = ref}} 

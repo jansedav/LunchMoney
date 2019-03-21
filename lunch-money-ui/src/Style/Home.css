@@ -2,12 +2,8 @@ body h1, h3{
     font-family: 'Luckiest Guy', cursive;
 }
 
-
-.background .fas{
-    font-size: 700px;
-    z-index: -1000;
-    opacity: 0.1;
-    text-align: center;
-    width: 100%;
-    position: relative;
+body{
+    background-image: url("./ForkAndKnife.png");
+    background-repeat:  no-repeat;
+    background-position: center 250px;
 }

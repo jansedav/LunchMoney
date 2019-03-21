@@ -10,8 +10,13 @@ class Foods extends Component {
     }
   }
 
-  componentDidMount(){
-    fetch('/api/foods')
+  componentDidMount(){    const myHeaders = new Headers();
+    myHeaders.append('Content-type', 'application/json');
+    myHeaders.append('x-auth-token', localStorage.getItem('Token'));
+    fetch('/api/foods', { 
+      method: 'GET',
+      headers: myHeaders
+    })
       .then(res => res.json())
       .then(Foods => this.setState({Foods}, () => console.log('Food fetched', Foods)));
   }
@@ -54,8 +59,12 @@ class Foods extends Component {
   }
 
   handleClick = userId => {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-type', 'application/json');
+    myHeaders.append('x-auth-token', localStorage.getItem('Token'));
     const requestOptions = {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: myHeaders
     };
     fetch("/api/Foods/" + userId, requestOptions).then((response) => {
       return response.json();
@@ -69,13 +78,13 @@ class Foods extends Component {
     return(
       <div className="foods">
       <br/>
-        <h2>Inventory</h2>
-        <a className="add-item" href="/Inventory/AddFood"> Add Food </a>
+        <h2>Inventory <i className="fas fa-hotdog"></i></h2>
+        <a className="add-food" href="/Inventory/AddFood"> Add Food </a>
         <br/>
         <br/>
-        <table>
+        <table className="food-table">
           <tbody>
-            <tr className="column-title">
+            <tr className="food-title">
               <th>Food Name</th>
               <th>Food Description</th>
               <th>Quantity</th>
@@ -86,7 +95,7 @@ class Foods extends Component {
               <th>Total Price of Goods</th>
             </tr>
             {this.state.Foods.map(Foods => 
-              <tr key={Foods._id}>
+              <tr className="food-rows" key={Foods._id}>
                 <th> {Foods.name} </th>
                 <th> {Foods.description} </th>
                 <th> {Foods.quantity} </th>
@@ -96,7 +105,7 @@ class Foods extends Component {
                 <th style={this.setColor(this.expirationStatus(Foods.expires))}> {this.checkExpiration(this.expirationStatus(Foods.expires))}</th>
                 <th> ${Math.round(Foods.quantity * Foods.price)} </th>
                 <th><button onClick={ this.handleClick.bind(this, Foods._id) } className="deletebtn">Delete</button></th>
-                <th><button className="editbtn">Edit</button></th>
+                <th><a href="/Inventory/EditFood"className="editbtn">Edit</a></th>
               </tr>
             )}
           </tbody>

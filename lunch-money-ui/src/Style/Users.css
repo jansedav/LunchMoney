@@ -28,3 +28,29 @@ form .inputs{
     background: white;
     cursor: pointer;
 }
+
+.RegisterLink{
+    color: white;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #007bff;
+    width: 400px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.RegisterLink p{
+    font-size: 16px;
+}
+.RegisterLink a{
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 8px;
+    color: white;
+}
+.RegisterLink a:hover{
+    color: #007bff;
+    background-color: white;
+}

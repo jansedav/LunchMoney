@@ -3,6 +3,15 @@ import { Navbar, Nav} from 'react-bootstrap';
 import '../Style/Navigation.css';
 
 class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(){
+    localStorage.setItem('Token', '');
+  }
+
   render() {
     return(
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
@@ -15,8 +24,8 @@ class Navigation extends Component {
             <Nav.Link className="items" href="/Dishes">Dishes</Nav.Link>
           </Nav>
           <Nav>
-          <Nav.Link href="/Register" className="account" >Sign Up</Nav.Link>
-          <Nav.Link href="/Login" className="account" >Login</Nav.Link>
+          <Navbar.Brand>Welcome {localStorage.getItem('User')}!</Navbar.Brand>
+          <Nav.Link onClick={this.handleLogout} href="/" className="account" > Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -29,15 +29,20 @@ class Login extends Component {
                 "password": this.state.password
             })
         })
-        .then(res => res.text())
+        .then(res => res.json())
         .then(res => {
-            console.log(res)
+            localStorage.setItem('Token', res.result.token);
+            localStorage.setItem('User', res.result.username);
+            window.location.replace("/");
+            
         });
     }
 
     render() {
         return(
         <div className="users">
+        <br/>
+            <h2>Welcome to LunchMoney, please sign in below to access your data!</h2>
             <form onSubmit={ this.handleSubmit } className="user_form">
                 <h2>Login <i className="fas fa-cookie-bite"></i></h2>
                 <div className="inputs">
@@ -66,6 +71,10 @@ class Login extends Component {
                     </button>
                 </div>
             </form>
+            <div className="RegisterLink">
+                    <p>Not signed up? Register below!</p>
+                    <a href="/Register">Register User</a>
+            </div>
         </div>
         )
     }

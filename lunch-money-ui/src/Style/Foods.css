@@ -1,75 +1,59 @@
-  table {
-    width:85%;
-    margin: 0 auto;
-  }
+body{
+  background-image: url("./ForkAndKnife.png");
+  background-repeat:  no-repeat;
+}
+.foods h2{
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center !important;
+}
 
-  table, th, td {
-    border: 1px solid #17a2b8;
-    border-collapse: collapse;
-  }
+.food-title {
+  background-color: #0050a8 !important;
+}
 
-  th, td {
-    padding: 15px;
-    text-align: left;
-  }
+.food-title th{
+  font-weight: 500;
+  color: white;
+  border: 1px solid #bababa;
+}
 
-  table tr:nth-child(even) {
-    background-color: #eee;
-  }
+.food-table {
+  width: 80%;
+  margin: 0 auto;
+}
 
-  table tr:nth-child(odd) {
-   background-color: #fff;
-  }
-  
-  .column-title th {
-    background-color: #007bff;
-    color: white;
-  }
+.food-table .food-rows {
+  background-color: #eaf4ff;
+}
 
-  .foods h2 {
-    text-align: center;
-  }
+.food-rows th{
+  font-weight: 400;
+  border: 1px solid #bababa;
+}
 
-  .add-item {
-    margin-left: 8%;
-    color: white;
-    padding: 13px !important;
-    background-color: #007bff;
-    border-radius: 8px !important;
-    border: 2px solid #007bff !important;
-  }
+.add-food {
+  font-size: 16px;
+  margin-left: 10%;
+  color: white;
+  padding: 6px;
+  background-color: #0050a8;
+  border: 1px solid #0050a8;
+  border-radius: 8px;
+}
 
-  .add-item:hover {
-    text-decoration: none;
-    color: black;
-    background-color: white;
-    transition: 0.3s;
-  }
+.add-food:hover {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  transition: 0.3s;
+}
 
-  .deletebtn{
-    border: 2px solid red;
-    border-radius: 8px;
-    color: white;
-    background-color: red;
-  }
+.food-table tbody>tr>:nth-child(10){
+background-color: white;
+border: 1px solid white;
+}
+.food-table tbody>tr>:nth-child(9){
+background-color: white;
+border: 1px solid white;
+}
 
-  .deletebtn:hover{
-    cursor: pointer;
-    color: red;
-    background-color:white;
-    transition: 0.3s;
-  }
-
-  .editbtn{
-    border: 2px solid #17a2b8;
-    border-radius: 8px;
-    color: white;
-    background-color: #17a2b8;
-  }
-
-  .editbtn:hover{
-    cursor: pointer;
-    color: #17a2b8;
-    background-color:white;
-    transition: 0.3s;
-  }
